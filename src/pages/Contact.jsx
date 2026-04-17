@@ -14,26 +14,26 @@ const Contact = () => {
     >
       <div className="flex-1">
         <h2 className="text-4xl md:text-5xl font-bold tracking-tight text-zinc-900 dark:text-white mb-4">Let's Connect</h2>
-        <p className="text-lg text-zinc-600 dark:text-zinc-400 font-light max-w-md mb-8">
+        <p className="text-lg text-zinc-700 dark:text-zinc-300 font-light max-w-md mb-8">
           Whether you have a question about infrastructure, a potential project, or just want to say hi, feel free to drop a message.
         </p>
         
         <div className="space-y-6">
-          <div className="flex items-center gap-4 text-zinc-600 dark:text-zinc-400">
+          <div className="flex items-center gap-4 text-zinc-700 dark:text-zinc-300">
             <div className="p-3 bg-white dark:bg-zinc-800 shadow-sm border border-zinc-100 dark:border-zinc-700/50 rounded-full">
               <Mail className="w-5 h-5 text-blue-500" />
             </div>
             <div>
-              <p className="font-medium text-zinc-900 dark:text-zinc-200">Email</p>
+              <p className="font-medium text-zinc-900 dark:text-white">Email</p>
               <p className="text-sm">Reach out via LinkedIn or use the form.</p>
             </div>
           </div>
-          <div className="flex items-center gap-4 text-zinc-600 dark:text-zinc-400">
+          <div className="flex items-center gap-4 text-zinc-700 dark:text-zinc-300">
             <div className="p-3 bg-white dark:bg-zinc-800 shadow-sm border border-zinc-100 dark:border-zinc-700/50 rounded-full">
               <MessageSquare className="w-5 h-5 text-indigo-500" />
             </div>
             <div>
-              <p className="font-medium text-zinc-900 dark:text-zinc-200">Social</p>
+              <p className="font-medium text-zinc-900 dark:text-white">Social</p>
               <a href="https://www.linkedin.com/in/vigneshwaranvic/" target="_blank" rel="noopener noreferrer" className="text-sm hover:text-blue-600 dark:hover:text-blue-400 transition-colors">linkedin.com/in/vigneshwaranvic</a>
             </div>
           </div>
@@ -53,37 +53,37 @@ const Contact = () => {
           <input type="hidden" name="_next" value={window.location.href} />
 
           <div className="flex flex-col gap-2">
-            <label htmlFor="name" className="text-sm font-medium text-zinc-700 dark:text-zinc-300">Full Name</label>
+            <label htmlFor="name" className="text-sm font-medium text-zinc-800 dark:text-zinc-200">Full Name</label>
             <input 
               type="text" 
               name="name" 
               id="name" 
               required
-              className="px-4 py-3 rounded-xl border border-zinc-200 dark:border-zinc-700/50 bg-white/50 dark:bg-zinc-900/50 text-zinc-900 dark:text-zinc-100 focus:bg-white dark:focus:bg-zinc-800/80 focus:outline-none focus:ring-2 focus:ring-blue-500/20 transition-all placeholder:text-zinc-400 dark:placeholder:text-zinc-600"
+              className="px-4 py-3 rounded-xl border border-zinc-200 dark:border-zinc-600 bg-white/50 dark:bg-zinc-800/80 text-zinc-900 dark:text-white focus:bg-white dark:focus:bg-zinc-800 focus:outline-none focus:ring-2 focus:ring-blue-500/50 transition-all placeholder:text-zinc-400 dark:placeholder:text-zinc-400"
               placeholder="John Doe"
             />
           </div>
           
           <div className="flex flex-col gap-2">
-            <label htmlFor="email" className="text-sm font-medium text-zinc-700 dark:text-zinc-300">Email Address</label>
+            <label htmlFor="email" className="text-sm font-medium text-zinc-800 dark:text-zinc-200">Email Address</label>
             <input 
               type="email" 
               name="email" 
               id="email" 
               required
-              className="px-4 py-3 rounded-xl border border-zinc-200 dark:border-zinc-700/50 bg-white/50 dark:bg-zinc-900/50 text-zinc-900 dark:text-zinc-100 focus:bg-white dark:focus:bg-zinc-800/80 focus:outline-none focus:ring-2 focus:ring-blue-500/20 transition-all placeholder:text-zinc-400 dark:placeholder:text-zinc-600"
+              className="px-4 py-3 rounded-xl border border-zinc-200 dark:border-zinc-600 bg-white/50 dark:bg-zinc-800/80 text-zinc-900 dark:text-white focus:bg-white dark:focus:bg-zinc-800 focus:outline-none focus:ring-2 focus:ring-blue-500/50 transition-all placeholder:text-zinc-400 dark:placeholder:text-zinc-400"
               placeholder="john@example.com"
             />
           </div>
 
           <div className="flex flex-col gap-2">
-            <label htmlFor="message" className="text-sm font-medium text-zinc-700 dark:text-zinc-300">Message</label>
+            <label htmlFor="message" className="text-sm font-medium text-zinc-800 dark:text-zinc-200">Message</label>
             <textarea 
               name="message" 
               id="message" 
               rows={4}
               required
-              className="px-4 py-3 rounded-xl border border-zinc-200 dark:border-zinc-700/50 bg-white/50 dark:bg-zinc-900/50 text-zinc-900 dark:text-zinc-100 focus:bg-white dark:focus:bg-zinc-800/80 focus:outline-none focus:ring-2 focus:ring-blue-500/20 transition-all resize-none placeholder:text-zinc-400 dark:placeholder:text-zinc-600"
+              className="px-4 py-3 rounded-xl border border-zinc-200 dark:border-zinc-600 bg-white/50 dark:bg-zinc-800/80 text-zinc-900 dark:text-white focus:bg-white dark:focus:bg-zinc-800 focus:outline-none focus:ring-2 focus:ring-blue-500/50 transition-all resize-none placeholder:text-zinc-400 dark:placeholder:text-zinc-400"
               placeholder="How can I help you?"
             ></textarea>
           </div>
@@ -96,7 +96,7 @@ const Contact = () => {
             <Send className="w-4 h-4 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
           </button>
           
-          <p className="text-xs text-center text-zinc-500 dark:text-zinc-500 mt-2">
+          <p className="text-xs text-center text-zinc-500 dark:text-zinc-400 mt-2">
             Note to Vic: Change 'YOUR_EMAIL_HERE@example.com' in the form action to your real email.
           </p>
         </form>

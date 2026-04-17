@@ -32,7 +32,7 @@ const Experience = () => {
     >
       <div className="mb-12">
         <h2 className="text-4xl md:text-5xl font-bold tracking-tight text-zinc-900 dark:text-white mb-4">Experience & Work</h2>
-        <p className="text-lg text-zinc-600 dark:text-zinc-400 font-light max-w-2xl">A summary of my professional journey, from global edge networks to private home infrastructure.</p>
+        <p className="text-lg text-zinc-700 dark:text-zinc-300 font-light max-w-2xl">A summary of my professional journey, from global edge networks to private home infrastructure.</p>
       </div>
 
       <div className="grid gap-6">
@@ -52,7 +52,7 @@ const Experience = () => {
               <div>
                 <h3 className="text-xl font-bold text-zinc-900 dark:text-white">{exp.company}</h3>
                 <h4 className="text-sm font-medium text-blue-600 dark:text-blue-400 mb-3">{exp.role}</h4>
-                <p className="text-zinc-600 dark:text-zinc-300 leading-relaxed font-light">{exp.description}</p>
+                <p className="text-zinc-700 dark:text-zinc-200 leading-relaxed font-light">{exp.description}</p>
               </div>
             </div>
           </motion.div>
