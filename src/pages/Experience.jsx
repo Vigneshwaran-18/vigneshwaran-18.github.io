@@ -31,8 +31,8 @@ const Experience = () => {
       className="min-h-full w-full pt-28 pb-20 px-6 max-w-4xl mx-auto flex flex-col z-10 relative"
     >
       <div className="mb-12">
-        <h2 className="text-4xl md:text-5xl font-bold tracking-tight text-zinc-900 mb-4">Experience & Work</h2>
-        <p className="text-lg text-zinc-600 font-light max-w-2xl">A summary of my professional journey, from global edge networks to private home infrastructure.</p>
+        <h2 className="text-4xl md:text-5xl font-bold tracking-tight text-zinc-900 dark:text-white mb-4">Experience & Work</h2>
+        <p className="text-lg text-zinc-600 dark:text-zinc-400 font-light max-w-2xl">A summary of my professional journey, from global edge networks to private home infrastructure.</p>
       </div>
 
       <div className="grid gap-6">
@@ -43,16 +43,16 @@ const Experience = () => {
             viewport={{ once: true }}
             transition={{ delay: idx * 0.1 }}
             key={idx} 
-            className="glass-panel p-6 md:p-8 hover:shadow-2xl transition-shadow duration-300"
+            className="glass-panel p-6 md:p-8 hover:shadow-2xl dark:hover:shadow-black/50 transition-shadow duration-300"
           >
             <div className="flex items-start gap-4">
-              <div className="p-3 bg-zinc-100 rounded-xl rounded-tl-none border border-zinc-200">
+              <div className="p-3 bg-zinc-100 dark:bg-zinc-800 rounded-xl rounded-tl-none border border-zinc-200 dark:border-zinc-700/50">
                 {exp.icon}
               </div>
               <div>
-                <h3 className="text-xl font-bold text-zinc-900">{exp.company}</h3>
-                <h4 className="text-sm font-medium text-blue-600 mb-3">{exp.role}</h4>
-                <p className="text-zinc-600 leading-relaxed font-light">{exp.description}</p>
+                <h3 className="text-xl font-bold text-zinc-900 dark:text-white">{exp.company}</h3>
+                <h4 className="text-sm font-medium text-blue-600 dark:text-blue-400 mb-3">{exp.role}</h4>
+                <p className="text-zinc-600 dark:text-zinc-300 leading-relaxed font-light">{exp.description}</p>
               </div>
             </div>
           </motion.div>
