@@ -12,6 +12,16 @@ dist
 dist-ssr
 *.local
 
+# Environment variables & Credentials
+.env
+.env.*
+!.env.example
+.dev.vars
+worker/.dev.vars
+
+# Cloudflare Wrangler Config (contains emails/secrets for your deployment)
+worker/wrangler.toml
+
 # Editor directories and files
 .vscode/*
 !.vscode/extensions.json
