@@ -1,6 +1,7 @@
 import { useState, useEffect, useRef } from 'react';
 import { motion } from 'framer-motion';
 import { useNavigate } from 'react-router-dom';
+import { HelpCircle } from 'lucide-react';
 
 const TerminalSplash = ({ onUnlock }) => {
   const navigate = useNavigate();
@@ -22,7 +23,13 @@ const TerminalSplash = ({ onUnlock }) => {
     // Focus input on load
     inputRef.current?.focus();
     const handleClick = () => inputRef.current?.focus();
-    window.addEventListener('click', handleClick);
+    // Exclude the help button from forcing focus
+    const handleWrapperClick = (e) => {
+      if (!e.target.closest('.help-badge')) {
+        handleClick();
+      }
+    };
+    window.addEventListener('click', handleWrapperClick);
     
     // Silently fetch IP address for the hacker illusion
     fetch('https://api.ipify.org?format=json')
@@ -32,7 +39,7 @@ const TerminalSplash = ({ onUnlock }) => {
       })
       .catch(() => {});
 
-    return () => window.removeEventListener('click', handleClick);
+    return () => window.removeEventListener('click', handleWrapperClick);
   }, []);
 
   useEffect(() => {
@@ -40,7 +47,7 @@ const TerminalSplash = ({ onUnlock }) => {
   }, [history]);
 
   const getPrompt = () => {
-    if (authState === 'user') return 'vishneshwaran-os login: ';
+    if (authState === 'user') return 'login: ';
     if (authState === 'pass') return 'Password: ';
     return `${currentUser}@vic-server:~$ `;
   };
@@ -51,7 +58,7 @@ const TerminalSplash = ({ onUnlock }) => {
       setCurrentUser(u);
       setHistory(prev => [
         ...prev,
-        { type: 'command', text: `vishneshwaran-os login: ${u}` }
+        { type: 'command', text: `login: ${u}` }
       ]);
       setAuthState('pass');
     } else if (authState === 'pass') {
@@ -175,9 +182,9 @@ lo: flags=73<UP,LOOPBACK,RUNNING>  mtu 65536
       animate={{ opacity: 1 }}
       exit={{ opacity: 0, scale: 0.95, filter: 'blur(10px)' }}
       transition={{ duration: 0.5 }}
-      className="fixed inset-0 z-[200] bg-zinc-950 text-green-500 font-mono p-4 md:p-8 flex flex-col overflow-y-auto selection:bg-green-500/30 selection:text-green-900"
+      className="fixed inset-0 z-[200] bg-zinc-950 text-green-500 font-mono p-4 md:p-8 flex flex-col overflow-y-auto selection:bg-green-500/30 selection:text-green-900 text-sm md:text-base cursor-text"
     >
-      <div className="max-w-4xl w-full mx-auto flex-1 flex flex-col">
+      <div className="max-w-4xl w-full flex-1 flex flex-col">
         {history.map((entry, i) => (
           <div key={i} className="mb-1 whitespace-pre-wrap">
             {entry.type === 'command' ? (
@@ -188,7 +195,7 @@ lo: flags=73<UP,LOOPBACK,RUNNING>  mtu 65536
           </div>
         ))}
         
-        <div className="flex items-center mt-1">
+        <div className="flex flex-wrap items-center mt-1">
           <span className="text-zinc-300 mr-2 shrink-0">{getPrompt()}</span>
           <input
             ref={inputRef}
@@ -196,13 +203,25 @@ lo: flags=73<UP,LOOPBACK,RUNNING>  mtu 65536
             value={input}
             onChange={(e) => setInput(e.target.value)}
             onKeyDown={handleKeyDown}
-            className="flex-1 bg-transparent border-none outline-none text-zinc-300 caret-green-500"
+            className="flex-1 bg-transparent border-none outline-none text-zinc-300 caret-green-500 min-w-[200px]"
             autoComplete="off"
             spellCheck="false"
             autoFocus
           />
         </div>
-        <div ref={bottomRef} className="h-4" />
+        <div ref={bottomRef} className="h-20" />
+      </div>
+
+      <div className="help-badge fixed bottom-4 right-4 z-[250] flex flex-col items-end group">
+        <div className="mb-2 p-3 bg-zinc-900 border border-zinc-800 rounded-lg text-xs md:text-sm text-zinc-400 opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none max-w-xs shadow-xl hidden md:block group-hover:block">
+          Hint: Create any login and password. Type <strong>help</strong> or <strong>boot</strong> to unlock!
+        </div>
+        <button 
+          className="p-2 md:p-3 bg-zinc-900 border border-zinc-800 text-zinc-400 rounded-full hover:bg-zinc-800 hover:text-white transition-colors cursor-help shadow-lg"
+          aria-label="Terminal Hint"
+        >
+          <HelpCircle size={20} />
+        </button>
       </div>
     </motion.div>
   );
