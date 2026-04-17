@@ -17,7 +17,7 @@ const Contact = () => {
     setErrorMessage('');
 
     // **IMPORTANT**: Replace this URL with your actual deployed Cloudflare Worker URL
-    const WORKER_URL = "https://contact-api.crxzy.workers.dev";
+    const WORKER_URL = "https://contact-api.contact-api.workers.dev";
     
     // For development/demonstration before full worker deploy, we mock the success
     if (WORKER_URL.includes("your-username")) {

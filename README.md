@@ -1,16 +1,36 @@
-# React + Vite
+# Vic's Interactive Portfolio
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A modern, fast, and interactive personal portfolio demonstrating expertise in infrastructure, networking, and software engineering.
 
-Currently, two official plugins are available:
+## 🚀 Technology Stack
+- **Frontend Framework**: React 18 & Vite
+- **Styling**: Tailwind CSS v4 (with automatic Light/Dark mode transitions)
+- **Animations & 3D**: Framer Motion & React-Three-Fiber
+- **Private API Backend**: Cloudflare Workers (Serverless Email Routing)
+- **Deployment**: Fully automated via GitHub Actions to GitHub Pages.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## 🌐 Deployment Architecture
+Because this repository (`vigneshwaran-18.github.io`) serves as the root GitHub Pages repository, it is configured with a robust deployment pipeline:
+1. **GitHub Actions Workflow**: Every push to the `main` branch triggers the `.github/workflows/deploy.yml` action.
+2. **Build Process**: The action automatically installs dependencies, runs `npm run build`, and creates the highly optimized static bundle in `/dist`.
+3. **Automated Publishing**: The action then securely publishes the bundled static assets straight to GitHub Pages without cluttering the repository with build artifacts.
 
-## React Compiler
+## 🔒 Private Contact Flow
+The Contact page does not rely on invasive third-party processors. It securely transmits POST requests directly to a private, extremely lightweight **Cloudflare Edge Worker** located in the `/worker` directory. This isolates credentials and ensures end-to-end privacy for all inbound queries.
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## 🛠️ Local Development
 
-## Expanding the ESLint configuration
+Clone the repository and install the dependencies:
+```bash
+npm install
+```
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+Start the Vite development server:
+```bash
+npm run dev
+```
+
+Build for production (locally):
+```bash
+npm run build
+```
