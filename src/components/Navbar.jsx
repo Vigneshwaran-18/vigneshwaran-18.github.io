@@ -1,6 +1,6 @@
 import { Link, useLocation } from 'react-router-dom';
 import { motion } from 'framer-motion';
-import { Moon, Sun, Terminal } from 'lucide-react';
+import { Moon, Sun, X } from 'lucide-react';
 import { useTheme } from './ThemeProvider';
 
 const Navbar = () => {
@@ -38,10 +38,10 @@ const Navbar = () => {
           <div className="flex items-center gap-2 border-l pl-4 border-zinc-200 dark:border-zinc-700">
             <Link 
               to="/" 
-              className="p-2 rounded-full hover:bg-zinc-200/50 dark:hover:bg-zinc-700/50 text-zinc-600 dark:text-zinc-300 transition-colors"
-              aria-label="Return to Terminal"
+              className="p-2 rounded-full hover:bg-zinc-200/50 dark:hover:bg-red-500/20 text-zinc-600 hover:text-red-500 dark:text-zinc-300 dark:hover:text-red-400 transition-colors"
+              aria-label="Exit to Terminal"
             >
-              <Terminal size={18} />
+              <X size={18} strokeWidth={2.5} />
             </Link>
             <button 
               onClick={toggleTheme} 

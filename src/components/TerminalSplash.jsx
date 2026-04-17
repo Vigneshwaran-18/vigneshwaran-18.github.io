@@ -151,7 +151,12 @@ lo: flags=73<UP,LOOPBACK,RUNNING>  mtu 65536
       case 'quit':
         output = 'Terminating secure session...\nDisconnecting... [OK]';
         setTimeout(() => {
-          navigate('/profile');
+          setAuthState('user');
+          setCurrentUser('');
+          setHistory([
+            { type: 'output', text: 'VicOS Kernel v1.0.0 (tty1)' },
+            { type: 'output', text: 'Session closed.' },
+          ]);
         }, 800);
         break;
       case '':
