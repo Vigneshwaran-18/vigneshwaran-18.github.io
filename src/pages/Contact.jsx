@@ -51,7 +51,7 @@ const Contact = () => {
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       exit={{ opacity: 0, y: -20 }}
-      className="min-h-full w-full pt-28 pb-20 px-6 max-w-5xl mx-auto flex flex-col md:flex-row gap-12 z-10 relative"
+      className="min-h-screen w-full pt-28 pb-20 px-6 max-w-5xl mx-auto flex flex-col md:flex-row gap-12 z-10 relative"
     >
       <div className="flex-1">
         <h2 className="text-4xl md:text-5xl font-bold tracking-tight text-zinc-900 dark:text-white mb-4">Let's Connect</h2>

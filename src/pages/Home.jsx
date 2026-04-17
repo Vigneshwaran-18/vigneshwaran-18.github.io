@@ -9,7 +9,7 @@ const Home = () => {
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
-      className="h-full w-full relative flex items-center justify-center pt-20"
+      className="min-h-screen w-full relative flex items-center justify-center pt-20"
     >
       <Scene3D />
       
