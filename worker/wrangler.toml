@@ -1,0 +1,8 @@
+name = "portfolio-contact-api"
+main = "src/index.js"
+compatibility_date = "2024-03-20"
+
+# Set your secrets and environment variables here or via Cloudflare Dashboard
+[vars]
+# TARGET_EMAIL = "your-email@gmail.com"
+# SENDER_EMAIL = "contact@your-verified-domain.com"
