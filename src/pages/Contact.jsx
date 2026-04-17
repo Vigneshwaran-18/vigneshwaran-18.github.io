@@ -16,34 +16,11 @@ const Contact = () => {
     setStatus('loading');
     setErrorMessage('');
 
-    // **IMPORTANT**: Replace this URL with your actual deployed Cloudflare Worker URL
-    const WORKER_URL = "https://contact-api.crxzydev.workers.dev";
-    
-    // For development/demonstration before full worker deploy, we mock the success
-    if (WORKER_URL.includes("your-username")) {
-      setTimeout(() => setStatus('success'), 1500);
-      return;
-    }
-
-    try {
-      const response = await fetch(WORKER_URL, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(formData),
-      });
-
-      if (!response.ok) {
-        const errData = await response.json().catch(() => null);
-        throw new Error(errData?.error || "Network error. Please try again.");
-      }
-
+    // Simulate backend sending latency since worker is disabled
+    setTimeout(() => {
       setStatus('success');
       setFormData({ name: '', email: '', message: '' });
-    } catch (error) {
-      console.error("Submission Error:", error);
-      setStatus('error');
-      setErrorMessage(error.message);
-    }
+    }, 1500);
   };
 
   return (

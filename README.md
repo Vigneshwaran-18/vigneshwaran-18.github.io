@@ -1,36 +1,40 @@
-# Vic's Interactive Portfolio
+# Hey, I'm Vic 👋
+> Software & Security Engineer
 
-A modern, fast, and interactive personal portfolio demonstrating expertise in infrastructure, networking, and software engineering.
+Welcome to the source code of my personal interactive portfolio! I built this space to showcase my work seamlessly blending modern frontend architecture with secure infrastructure paradigms.
 
-## 🚀 Technology Stack
-- **Frontend Framework**: React 18 & Vite
+## 🚀 Tech Stack
+This site is built and served leveraging modern, minimal tooling:
+- **Core**: React 18 & Vite
 - **Styling**: Tailwind CSS v4 (with automatic Light/Dark mode transitions)
-- **Animations & 3D**: Framer Motion & React-Three-Fiber
-- **Private API Backend**: Cloudflare Workers (Serverless Email Routing)
-- **Deployment**: Fully automated via GitHub Actions to GitHub Pages.
+- **Visuals**: Framer Motion & React-Three-Fiber
+- **Hosting**: Native GitHub Actions deployment straight to GitHub Pages.
 
-## 🌐 Deployment Architecture
-Because this repository (`vigneshwaran-18.github.io`) serves as the root GitHub Pages repository, it is configured with a robust deployment pipeline:
-1. **GitHub Actions Workflow**: Every push to the `main` branch triggers the `.github/workflows/deploy.yml` action.
-2. **Build Process**: The action automatically installs dependencies, runs `npm run build`, and creates the highly optimized static bundle in `/dist`.
-3. **Automated Publishing**: The action then securely publishes the bundled static assets straight to GitHub Pages without cluttering the repository with build artifacts.
+## 🧬 Interactive Features
+If you visit the live URL at `vigneshwaran-18.github.io`, you'll be greeted by a custom Terminal splash screen. I built this entirely using a state-machine that mimics a Linux environment. Go ahead and try to hack your way in! 
 
-## 🔒 Private Contact Flow
-The Contact page does not rely on invasive third-party processors. It securely transmits POST requests directly to a private, extremely lightweight **Cloudflare Edge Worker** located in the `/worker` directory. This isolates credentials and ensures end-to-end privacy for all inbound queries.
+Also look out for:
+- Simulated LDAP-style login
+- Smooth scrolling progress bars
+- An interactive custom cursor
+- Deep 3D Parallax using Three.js
 
 ## 🛠️ Local Development
+If you want to clone this to hack around:
 
-Clone the repository and install the dependencies:
+1. Clone and install the dependencies:
 ```bash
 npm install
 ```
 
-Start the Vite development server:
+2. Start the Vite development server:
 ```bash
 npm run dev
 ```
 
-Build for production (locally):
+3. Build for production:
 ```bash
 npm run build
 ```
+
+*Built with passion, coffee, and too much time spent staring at Wireshark logs.*
