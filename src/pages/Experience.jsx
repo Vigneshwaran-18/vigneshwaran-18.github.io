@@ -19,7 +19,7 @@ const Experience = () => {
       company: 'Freelancing & Projects',
       role: 'Full Stack & Backend',
       icon: <Database className="w-6 h-6 text-teal-500" />,
-      description: 'Completed various personal and freelance projects including svasthya_app (backend architecture) and gh_mon. Specialized in creating scalable robust systems tailored to specific client needs.',
+      description: 'Delivered various personal and freelance software projects spanning backend architecture, AI-powered agents (including crop health and retrieval-augmented generation systems), Docker-based deployments, and building scalable systems on Linux infrastructure.',
     }
   ];
 
