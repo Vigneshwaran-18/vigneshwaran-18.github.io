@@ -1,7 +1,7 @@
 import { useState, useEffect, useRef } from 'react';
 import { motion } from 'framer-motion';
 import { useNavigate } from 'react-router-dom';
-import { HelpCircle } from 'lucide-react';
+import { HelpCircle, X } from 'lucide-react';
 
 const TerminalSplash = ({ onUnlock }) => {
   const navigate = useNavigate();
@@ -23,9 +23,9 @@ const TerminalSplash = ({ onUnlock }) => {
     // Focus input on load
     inputRef.current?.focus();
     const handleClick = () => inputRef.current?.focus();
-    // Exclude the help button from forcing focus
+    // Exclude the help/close buttons from forcing focus
     const handleWrapperClick = (e) => {
-      if (!e.target.closest('.help-badge')) {
+      if (!e.target.closest('.no-focus-steal')) {
         handleClick();
       }
     };
@@ -92,7 +92,8 @@ const TerminalSplash = ({ onUnlock }) => {
   ifconfig     - Configure a network interface
   traceroute   - Print the route packets trace to network host
   
-  ./boot       - [CRITICAL] Execute portfolio initialization sequence`;
+  ./boot       - [CRITICAL] Execute portfolio initialization sequence
+  exit         - Terminate session and bypass terminal`;
         break;
       case 'whoami':
         output = `${currentUser}\nRole: Network & Security Specialist / Software Engineer\nAccess Level: Transient Guest`;
@@ -146,6 +147,13 @@ lo: flags=73<UP,LOOPBACK,RUNNING>  mtu 65536
           onUnlock();
         }, 1200);
         break;
+      case 'exit':
+      case 'quit':
+        output = 'Terminating secure session...\nDisconnecting... [OK]';
+        setTimeout(() => {
+          onUnlock();
+        }, 800);
+        break;
       case '':
         output = '';
         break;
@@ -184,7 +192,15 @@ lo: flags=73<UP,LOOPBACK,RUNNING>  mtu 65536
       transition={{ duration: 0.5 }}
       className="fixed inset-0 z-[200] bg-zinc-950 text-green-500 font-mono p-4 md:p-8 flex flex-col overflow-y-auto selection:bg-green-500/30 selection:text-green-900 text-sm md:text-base cursor-text"
     >
-      <div className="max-w-4xl w-full flex-1 flex flex-col">
+      <button 
+        onClick={onUnlock}
+        className="no-focus-steal fixed top-4 right-4 p-2 text-zinc-600 hover:text-white hover:bg-zinc-800 rounded-lg transition-colors z-[250]"
+        aria-label="Skip Terminal"
+      >
+        <X size={24} />
+      </button>
+
+      <div className="max-w-4xl w-full flex-1 flex flex-col mt-6 md:mt-0">
         {history.map((entry, i) => (
           <div key={i} className="mb-1 whitespace-pre-wrap">
             {entry.type === 'command' ? (
@@ -212,7 +228,7 @@ lo: flags=73<UP,LOOPBACK,RUNNING>  mtu 65536
         <div ref={bottomRef} className="h-20" />
       </div>
 
-      <div className="help-badge fixed bottom-4 right-4 z-[250] flex flex-col items-end group">
+      <div className="no-focus-steal help-badge fixed bottom-4 right-4 z-[250] flex flex-col items-end group">
         <div className="mb-2 p-3 bg-zinc-900 border border-zinc-800 rounded-lg text-xs md:text-sm text-zinc-400 opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none max-w-xs shadow-xl hidden md:block group-hover:block">
           Hint: Create any login and password. Type <strong>help</strong> or <strong>boot</strong> to unlock!
         </div>
