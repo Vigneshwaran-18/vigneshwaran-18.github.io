@@ -1,20 +1,9 @@
-import { useState } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion } from 'framer-motion';
 import Scene3D from '../components/Scene3D';
-import TerminalSplash from '../components/TerminalSplash';
 import { ArrowRight, Mail } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
 const Home = () => {
-  const [isUnlocked, setIsUnlocked] = useState(() => {
-    return sessionStorage.getItem('terminal_unlocked') === 'true';
-  });
-
-  const handleUnlock = () => {
-    sessionStorage.setItem('terminal_unlocked', 'true');
-    setIsUnlocked(true);
-  };
-
   return (
     <motion.div
       initial={{ opacity: 0 }}
@@ -22,10 +11,6 @@ const Home = () => {
       exit={{ opacity: 0 }}
       className="min-h-screen w-full relative flex items-center justify-center pt-20"
     >
-      <AnimatePresence>
-        {!isUnlocked && <TerminalSplash key="terminal" onUnlock={handleUnlock} />}
-      </AnimatePresence>
-      
       <Scene3D />
       
       <div className="z-10 text-center px-6 max-w-3xl flex flex-col items-center">

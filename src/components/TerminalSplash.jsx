@@ -1,9 +1,9 @@
 import { useState, useEffect, useRef } from 'react';
 import { motion } from 'framer-motion';
 import { useNavigate } from 'react-router-dom';
-import { HelpCircle, X } from 'lucide-react';
+import { HelpCircle } from 'lucide-react';
 
-const TerminalSplash = ({ onUnlock }) => {
+const TerminalSplash = () => {
   const navigate = useNavigate();
   // AUTH STATES: 'user', 'pass', 'terminal'
   const [authState, setAuthState] = useState('user');
@@ -23,7 +23,7 @@ const TerminalSplash = ({ onUnlock }) => {
     // Focus input on load
     inputRef.current?.focus();
     const handleClick = () => inputRef.current?.focus();
-    // Exclude the help/close buttons from forcing focus
+    // Exclude the help button from forcing focus
     const handleWrapperClick = (e) => {
       if (!e.target.closest('.no-focus-steal')) {
         handleClick();
@@ -144,14 +144,14 @@ lo: flags=73<UP,LOOPBACK,RUNNING>  mtu 65536
       case 'start':
         output = 'Executing boot sequence...\nLoading UI layers...\nBypassing firewall rules... [OK]\nUnlocking Home Page...';
         setTimeout(() => {
-          onUnlock();
+          navigate('/profile');
         }, 1200);
         break;
       case 'exit':
       case 'quit':
         output = 'Terminating secure session...\nDisconnecting... [OK]';
         setTimeout(() => {
-          onUnlock();
+          navigate('/profile');
         }, 800);
         break;
       case '':
@@ -192,14 +192,6 @@ lo: flags=73<UP,LOOPBACK,RUNNING>  mtu 65536
       transition={{ duration: 0.5 }}
       className="fixed inset-0 z-[200] bg-zinc-950 text-green-500 font-mono p-4 md:p-8 flex flex-col overflow-y-auto selection:bg-green-500/30 selection:text-green-900 text-sm md:text-base cursor-text"
     >
-      <button 
-        onClick={onUnlock}
-        className="no-focus-steal fixed top-4 right-4 p-2 text-zinc-600 hover:text-white hover:bg-zinc-800 rounded-lg transition-colors z-[250]"
-        aria-label="Skip Terminal"
-      >
-        <X size={24} />
-      </button>
-
       <div className="max-w-4xl w-full flex-1 flex flex-col mt-6 md:mt-0">
         {history.map((entry, i) => (
           <div key={i} className="mb-1 whitespace-pre-wrap">
