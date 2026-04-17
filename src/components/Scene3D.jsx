@@ -2,6 +2,7 @@ import { useRef } from 'react';
 import { Canvas, useFrame } from '@react-three/fiber';
 import { Environment, Float, MeshDistortMaterial } from '@react-three/drei';
 import { isMobile } from 'react-device-detect';
+import { motion, useScroll, useTransform } from 'framer-motion';
 
 const Shape = () => {
   const meshRef = useRef();
@@ -33,15 +34,21 @@ const Shape = () => {
 };
 
 const Scene3D = () => {
+  const { scrollY } = useScroll();
+  const yPos = useTransform(scrollY, [0, 1000], [0, 400]);
+
   return (
-    <div className="absolute inset-0 z-0 h-full w-full pointer-events-none">
+    <motion.div 
+      style={{ y: yPos }}
+      className="absolute inset-0 z-0 h-[100vh] w-full pointer-events-none"
+    >
       <Canvas camera={{ position: [0, 0, 5], fov: 75 }} className="h-full w-full opacity-40">
         <ambientLight intensity={0.5} />
         <directionalLight position={[10, 10, 5]} intensity={1} />
         <Shape />
         <Environment preset="city" />
       </Canvas>
-    </div>
+    </motion.div>
   );
 };
 

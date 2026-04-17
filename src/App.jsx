@@ -1,17 +1,32 @@
 import { Routes, Route, useLocation } from 'react-router-dom';
-import { AnimatePresence } from 'framer-motion';
+import { AnimatePresence, motion, useScroll, useSpring } from 'framer-motion';
 import Navbar from './components/Navbar';
 import Home from './pages/Home';
 import Experience from './pages/Experience';
 import Contact from './pages/Contact';
+import CustomCursor from './components/CustomCursor';
 
 function App() {
   const location = useLocation();
+  const { scrollYProgress } = useScroll();
+  const scaleX = useSpring(scrollYProgress, {
+    stiffness: 100,
+    damping: 30,
+    restDelta: 0.001
+  });
 
   return (
-    <div className="min-h-screen flex flex-col w-full overflow-hidden absolute inset-0">
+    <div className="min-h-screen flex flex-col w-full overflow-x-hidden relative">
+      <CustomCursor />
+      
+      {/* Scroll Progress Bar */}
+      <motion.div
+        className="fixed top-0 left-0 right-0 h-1 bg-blue-600 dark:bg-blue-400 origin-left z-[100]"
+        style={{ scaleX }}
+      />
+      
       <Navbar />
-      <main className="flex-1 w-full relative h-full">
+      <main className="flex-1 w-full relative">
         <AnimatePresence mode="wait">
           <Routes location={location} key={location.pathname}>
             <Route path="/" element={<Home />} />
